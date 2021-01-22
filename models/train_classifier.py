@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sqlalchemy import create_engine
 import re
 from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.pipeline import Pipeline
@@ -14,10 +15,7 @@ import pickle
 
 
 def load_data(database_filepath):
-    """
-    Load data from SQLite database and parse into features and target
-    variables
-    """
+    """Load data from SQLite database and parse into features and target variables"""
 
     connect_str = f"sqlite:///{database_filepath}"
     engine = create_engine(connect_str)
@@ -30,12 +28,19 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    """Clean and tokenize text"""
 
+    # remove punctuation and capitals
     text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
+
+    # tokenize into words
     tokens = word_tokenize(text)
 
-    lemmatizer = WordNetLemmatizer()
+    # Remove stop words
+    tokens = [t for t in tokens if t not in stopwords.words("english")]
 
+    # lemmatize
+    lemmatizer = WordNetLemmatizer()
     clean_tokens = []
     for tok in tokens:
         clean_tok = lemmatizer.lemmatize(tok).strip()
@@ -45,6 +50,8 @@ def tokenize(text):
 
 
 def build_model():
+    """Build machine learning pipeline"""
+
     pipeline = Pipeline(
         [
             ("vect", CountVectorizer(tokenizer=tokenize)),
@@ -61,11 +68,15 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """Print classification report for positive labels"""
+
     y_pred = model.predict(X_test)
     print(classification_report(Y_test, y_pred, target_names=category_names))
 
 
 def save_model(model, model_filepath):
+    """Pickle the model"""
+
     pickle.dump(model, open(model_filepath, "wb"))
 
 
