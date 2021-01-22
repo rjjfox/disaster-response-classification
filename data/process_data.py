@@ -30,6 +30,15 @@ def clean_data(df):
         # convert column from string to numeric
         categories[column] = categories[column].astype("int")
 
+    # clip values to be either a 0 or 1
+    categories = categories.clip(0, 1)
+
+    # remove columns with only one value
+    one_value_columns = [
+        column for column in categories.columns if len(categories[column].unique()) == 1
+    ]
+    categories = categories.drop(one_value_columns, axis=1)
+
     # drop original categories column and add encoded features to dataframe
     df = df.drop("categories", axis=1)
     df = pd.concat([df, categories], axis=1)
