@@ -10,6 +10,7 @@ def return_figures(df):
             x=df.genre.value_counts().index.tolist(),
             y=df.genre.value_counts().values.tolist(),
             hoverinfo="skip",
+            marker_color="#BB764B",
         )
     )
 
@@ -18,11 +19,6 @@ def return_figures(df):
             "title": {
                 "text": "Message Source",
                 "font": {"family": "Roboto", "size": 18},
-            },
-            "hoverlabel": {
-                "bgcolor": "white",
-                "font_size": 16,
-                "font_family": "Roboto",
             },
         }
     )
@@ -34,6 +30,7 @@ def return_figures(df):
             x=label_tallies.values.tolist(),
             y=label_tallies.index.tolist(),
             orientation="h",
+            marker_color="#BB764B",
         )
     )
 
@@ -45,16 +42,16 @@ def return_figures(df):
             },
             "margin": {
                 "pad": 10,
-                "l": 40,
+                "l": 140,
                 "r": 40,
                 "t": 65,
                 "b": 40,
             },
             "hoverlabel": {
-                "bgcolor": "white",
-                "font_size": 16,
+                "font_size": 18,
                 "font_family": "Roboto",
             },
+            "yaxis": {"dtick": 1},
         }
     )
 
