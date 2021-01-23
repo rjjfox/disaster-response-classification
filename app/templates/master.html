@@ -73,8 +73,8 @@
         </div>
 
         <div class="message">
-            {% block message %}
-            {% endblock %}
+            <!-- {% block message %}
+            {% endblock %} -->
         </div>
 
     </div>
@@ -88,6 +88,10 @@
         {% for id in ids %}
         <div id="{{id}}"></div>
         {% endfor %}
+
+        <div class="wordcloud">
+            <img src="{{ url_for('static',filename='wordcloud.png') }}" alt="message wordcloud">
+        </div>
 
         <script type="text/javascript">
         const graphs = {{graphJSON | safe}};
