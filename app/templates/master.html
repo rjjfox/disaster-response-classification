@@ -41,13 +41,32 @@
 
     <div class="hero">
         <div class="intro">
-            <h1>Disaster Response Project</h1>
-            <p>Analyzing message data for disaster response</p=>
+            <h1>Disaster Response Classification API</h1>
+            <p>
+                The API uses machine learning to categorise messages received during a crisis. Categorising messages
+                into topics allows organisations to find relevant messages and prioritise accordingly.
+            </p>
+            <p>
+                Messages get sent directly to organisations, appear in posts on social media and get reported in the
+                news. Filtering through masses of data in the midst of a crisis is not what we want disaster
+                response
+                organisations to be worrying about.
+            </p>
+            <p>
+                Training a machine learning model on 30,000 real messages received during events such as the 2010
+                earthquakes in Haiti and Chile, floods in Pakistan in 2010 and super-storm Sandy in 2012, the API
+                helps
+                organisations focus on getting help to the right places.
+            </p>
+            <p>
+                Try out the API here wth your own message.
+            </p>
+
         </div>
 
         <div class="form">
             <form action="/go" method="get">
-                <input type="text" name="query" placeholder="Enter a message to classify">
+                <input type="text" name="query" placeholder="Enter a message to classify...">
                 <div>
                     <button type="submit">Classify Message</button>
                 </div>
@@ -64,7 +83,7 @@
     <div class="overview">
         {% block content %}
         <div class="page-header">
-            <h1 class="text-center">Overview of Training Dataset</h1>
+            <h1 class="text-center">An Overview of the Training Data</h1>
         </div>
 
         {% for id in ids %}
