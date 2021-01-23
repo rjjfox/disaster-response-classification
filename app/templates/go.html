@@ -2,12 +2,12 @@
 {% block title %}Results{% endblock %}
 
 {% block message %}
-<h4 class="text-center">MESSAGE</h4>
-<p class="text-center"><i>{{query}}</i></p>
+<h4>MESSAGE</h4>
+<p><i>{{query}}</i></p>
 {% endblock %}
 
 {% block content %}
-<h1 class="text-center">Result</h1>
+<h1>Result</h1>
 <ul class="classification-labels">
     {% for category, classification in classification_result.items() %}
     {% if classification == 1 %}
