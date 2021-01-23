@@ -101,3 +101,20 @@ form input {
 .message {
   background-color: #cdd9eb;
 }
+
+/* ============== Label section ============== */
+.classification-labels {
+  padding-left: 0;
+}
+
+.list-item {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+}
+
+.list-item.success {
+  color: #3c763d;
+  background-color: #dff0d8;
+}
