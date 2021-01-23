@@ -75,3 +75,29 @@
     text-align: left;
   }
 }
+
+/* ============== Hero section ============== */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  background-color: #fafbfc;
+}
+
+.hero > div {
+  margin: 1em 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input {
+  margin-bottom: 1em;
+}
+
+.message {
+  background-color: #cdd9eb;
+}

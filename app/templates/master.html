@@ -44,58 +44,58 @@
             <i class="fa fa-bars"></i></a>
     </div>
 
-    <div class="jumbotron">
-        <div class="container">
+    <div class="hero">
+        <div class="intro">
             <h1 class="text-center">Disaster Response Project</h1>
             <p class="text-center">Analyzing message data for disaster response</p>
-            <hr />
+        </div>
 
-            <div class="row">
-                <div class="col-lg-12 form-group-lg">
-                    <form action="/go" method="get">
-                        <input type="text" class="form-control form-control-lg" name="query"
-                            placeholder="Enter a message to classify">
-                        <div class="col-lg-offset-5">
-                            <button type="submit" class="btn btn-lg btn-success">Classify Message</button>
-                        </div>
-                    </form>
+        <div class="form">
+            <form action="/go" method="get">
+                <input type="text" name="query" placeholder="Enter a message to classify">
+                <div>
+                    <button type="submit">Classify Message</button>
                 </div>
-            </div>
+            </form>
+        </div>
 
+        <div class="message">
             {% block message %}
             {% endblock %}
         </div>
+
     </div>
 
-    <div class="container">
+    <div class="overview">
         {% block content %}
         <div class="page-header">
             <h1 class="text-center">Overview of Training Dataset</h1>
         </div>
-        {% endblock %}
 
         {% for id in ids %}
         <div id="{{id}}"></div>
         {% endfor %}
-    </div>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
         const graphs = {{graphJSON | safe}};
         const ids = {{ids | safe}};
         for(let i in graphs) {
             Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
         }
-    </script>
+        </script>
+
+        {% endblock %}
+    </div>
 
     <script type="text/javascript">
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-            x.className += " responsive";
-            } else {
-            x.className = "topnav";
-            }
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+        x.className += " responsive";
+        } else {
+        x.className = "topnav";
         }
+    }
     </script>
 
 </body>
