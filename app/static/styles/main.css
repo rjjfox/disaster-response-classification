@@ -130,16 +130,21 @@ form button:hover {
   background-color: #cdd9eb;
 }
 
-/* ============== Results section ============== */
+/* ============== Overview section ============== */
+
+.overview-header {
+  margin: 2em auto 1em;
+  text-align: center;
+}
 
 .plots {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-.plots > div {
+/* .plots > div {
   min-height: 400px;
-}
+} */
 
 .wordcloud img {
   width: 100%;

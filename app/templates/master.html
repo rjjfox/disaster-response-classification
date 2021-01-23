@@ -81,8 +81,8 @@
 
     {% block content %}
     <div class="overview">
-        <div class="page-header">
-            <h1 class="text-center">An Overview of the Training Data</h1>
+        <div class="overview-header">
+            <h2>An Overview of the Training Data</h2>
         </div>
 
         <div class="plots">
@@ -96,10 +96,28 @@
         </div>
 
         <script type="text/javascript">
+        // Look at device type before defining the config
+        function setPlotlyConfig(x) {
+            if (x.matches) { // If media query matches
+                config = {responsive: true, displayModeBar: false};
+            } else {
+                config = {responsive: true};
+            }
+            return config;
+        }
+        
+        var lessThan700 = window.matchMedia("(max-width: 700px)")
+        plotly_config = setPlotlyConfig(lessThan700)
+
         const graphs = {{graphJSON | safe}};
         const ids = {{ids | safe}};
         for(let i in graphs) {
-            Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
+            Plotly.plot(
+                ids[i],
+                graphs[i].data,
+                graphs[i].layout,
+                config = plotly_config || {}
+            );
         }
         </script>
     </div>
