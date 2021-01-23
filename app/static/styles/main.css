@@ -92,7 +92,7 @@
 
 .hero p {
   width: 75%;
-  margin: 1em auto;
+  margin: 1em auto 0;
 }
 
 .hero > div {
