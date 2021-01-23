@@ -131,6 +131,21 @@ form button:hover {
 }
 
 /* ============== Results section ============== */
+
+.plots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.plots > div {
+  min-height: 400px;
+}
+
+.wordcloud img {
+  width: 100%;
+}
+
+/* ============== Results section ============== */
 .results {
   text-align: center;
   display: grid;

@@ -85,12 +85,14 @@
             <h1 class="text-center">An Overview of the Training Data</h1>
         </div>
 
-        {% for id in ids %}
-        <div id="{{id}}"></div>
-        {% endfor %}
+        <div class="plots">
+            {% for id in ids %}
+            <div id="{{id}}"></div>
+            {% endfor %}
 
-        <div class="wordcloud">
-            <img src="{{ url_for('static',filename='wordcloud.png') }}" alt="message wordcloud">
+            <div class="wordcloud">
+                <img src="{{ url_for('static',filename='wordcloud.png') }}" alt="message wordcloud">
+            </div>
         </div>
 
         <script type="text/javascript">
