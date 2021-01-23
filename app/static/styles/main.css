@@ -130,9 +130,35 @@ form button:hover {
   background-color: #cdd9eb;
 }
 
-/* ============== Label section ============== */
-.overview {
+/* ============== Results section ============== */
+.results {
   text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 1em;
+  padding: 1em;
+}
+
+.results > div {
+  padding: 1em;
+}
+
+.results h2 {
+  margin-bottom: 0.5em;
+}
+
+.message-relay {
+  background: #f8f8f8;
+}
+
+.message-relay {
+  margin: 1em;
+  font-size: 1.4em;
+}
+
+.classification-labels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .list-item {
@@ -145,4 +171,39 @@ form button:hover {
 .list-item.success {
   color: #3c763d;
   background-color: #dff0d8;
+}
+
+@media only screen and (max-width: 500px) {
+  .results {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============== Footer ============== */
+.site-footer {
+  padding-bottom: 0rem;
+  color: #99999a;
+  background-color: #fafafb;
+  margin-top: 2em;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.small-font {
+  font-size: 14px;
+}
+
+.site-footer .icon {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  fill: currentColor;
+  padding-left: 5px;
 }
