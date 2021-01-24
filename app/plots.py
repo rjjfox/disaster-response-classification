@@ -17,8 +17,8 @@ def return_figures(df):
     genres_layout = dict(
         {
             "title": {
-                "text": "<b>The majority of the messages come directly or via "
-                "the news</b><br>Only a small percentage of the the data comes"
+                "text": "<b>Majority of messages come directly or via "
+                "news</b><br>Small percentage of the data comes"
                 " from social",
                 "font": {"family": "Roboto", "size": 16},
             },
@@ -39,9 +39,9 @@ def return_figures(df):
     label_layout = dict(
         {
             "title": {
-                "text": "<b>Not all messages are relevant to Disaster Response"
-                "</b><br>75% of messages labelled <i>related</i> to denote"
-                " relevance",
+                "text": "<b>Not all messages are relevant"
+                "</b><br>75% of messages labelled <i>related</i> to mean"
+                " relevant",
                 "font": {"family": "Roboto", "size": 16},
             },
             "margin": {
