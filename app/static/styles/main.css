@@ -96,7 +96,16 @@
 }
 
 .hero > div {
-  margin: 1em 0;
+  margin: 1em auto;
+}
+
+.hero > div,
+.overview > div {
+  max-width: 1400px;
+}
+
+.hero .form {
+  width: 100%;
 }
 
 form {
@@ -109,6 +118,7 @@ form input {
   width: 85%;
   margin-bottom: 1em;
   padding: 0.8em 1em;
+  line-height: 1.25;
 }
 
 form button {
@@ -209,10 +219,10 @@ button:hover {
 
 .message-relay {
   background: #f8f8f8;
+  margin: 1em;
 }
 
-.message-relay {
-  margin: 1em;
+.message-relay p {
   font-size: 1.4em;
 }
 
