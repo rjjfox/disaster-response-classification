@@ -34,13 +34,14 @@ try:
     engine = create_engine("sqlite:///data/DisasterResponse.db")
     df = pd.read_sql_table("messages", engine)
 except:
-    engine = create_engine(
-        "sqlite:////home/ryanfox212/disaster-response-classification/data/DisasterResponse.db"
-    )
+    engine = create_engine("sqlite:///app/data/DisasterResponse.db")
     df = pd.read_sql_table("messages", engine)
 
 # load model
-model = joblib.load("models/classifier.pkl")
+try:
+    model = joblib.load("models/classifier.pkl")
+except:
+    model = joblib.load("app/models/classifier.pkl")
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route("/")
