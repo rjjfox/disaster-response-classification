@@ -9,10 +9,10 @@
     <title>Disasters</title>
 
     <!-- css stylesheet -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/reset.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/normalize.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/typography.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}" />
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -82,16 +82,40 @@
     {% block content %}
     <div class="overview">
         <div class="overview-header">
-            <h2>An Overview of the Training Data</h2>
+            <h1>Take a look at the training data...</h1>
         </div>
 
-        <div class="plots">
-            {% for id in ids %}
-            <div id="{{id}}"></div>
-            {% endfor %}
+        <div class="samples">
+            <h3>Here's a sample of messages</h3>
+            <p>
+                You'll notice that not all messages are necessarily relevant to organisations looking to arrange aid.
+                This is why the first label in the classification problem is "related" to denote whether it's relevant.
+                Refresh the page to load up new messages.
+            </p>
+
+            <div class="sample-slots">
+                {% for sample in sample_messages %}
+                <div>
+                    <p><i>"{{sample[2]}}"</i> (source: {{sample[1]}})</p>
+                    <div>
+                        <button>Classify Message</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="plot-section">
+            <h3>Some tasty visualisations</h3>
 
             <div class="wordcloud">
                 <img src="{{ url_for('static',filename='wordcloud.png') }}" alt="message wordcloud">
+            </div>
+
+            <div class="plots">
+                {% for id in ids %}
+                <div id="{{id}}"></div>
+                {% endfor %}
             </div>
         </div>
 

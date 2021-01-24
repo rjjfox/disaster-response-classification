@@ -47,12 +47,14 @@ def index():
     ids = ["graph-{}".format(i) for i, _ in enumerate(figures)]
     graphJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
 
-    # # encode plotly graphs in JSON
-    # ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
-    # graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+    messages_df = df[["message", "genre"]].copy()
+    messages_df["shortened"] = messages_df.message.str[:250]
+    sample_messages = messages_df.sample(3).values
 
     # render web page with plotly graphs
-    return render_template("master.html", ids=ids, graphJSON=graphJSON)
+    return render_template(
+        "master.html", ids=ids, graphJSON=graphJSON, sample_messages=sample_messages
+    )
 
 
 # web page that handles user query and displays model results
