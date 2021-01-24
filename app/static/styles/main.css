@@ -190,12 +190,17 @@ button:hover {
 }
 
 /* Plots */
+.plot-section > div {
+  margin-bottom: 2.5em;
+}
+
 .wordcloud img {
   width: 100%;
   max-width: 800px;
 }
 
 .plots {
+  margin-top: 1.5em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }

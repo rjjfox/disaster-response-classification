@@ -17,8 +17,10 @@ def return_figures(df):
     genres_layout = dict(
         {
             "title": {
-                "text": "Message Source",
-                "font": {"family": "Roboto", "size": 18},
+                "text": "<b>The majority of the messages come directly or via "
+                "the news</b><br>Only a small percentage of the the data comes"
+                " from social",
+                "font": {"family": "Roboto", "size": 16},
             },
         }
     )
@@ -37,14 +39,16 @@ def return_figures(df):
     label_layout = dict(
         {
             "title": {
-                "text": "Label Tallies",
-                "font": {"family": "Roboto", "size": 18},
+                "text": "<b>Not all messages are relevant to Disaster Response"
+                "</b><br>75% of messages labelled <i>related</i> to denote"
+                " relevance",
+                "font": {"family": "Roboto", "size": 16},
             },
             "margin": {
                 "pad": 10,
                 "l": 140,
                 "r": 40,
-                "t": 65,
+                "t": 80,
                 "b": 40,
             },
             "hoverlabel": {

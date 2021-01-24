@@ -118,16 +118,19 @@
         </div>
 
         <div class="plot-section">
-            <h3>Some tasty visualisations</h3>
-
             <div class="wordcloud">
+                <h3>An overview of what people message about</h3>
                 <img src="{{ url_for('static',filename='wordcloud.png') }}" alt="message wordcloud">
             </div>
 
-            <div class="plots">
-                {% for id in ids %}
-                <div id="{{id}}"></div>
-                {% endfor %}
+            <div class="plotly-plots">
+                <h3>High-level summaries</h3>
+                <p>An insight into the source of the training data and their labels.</p>
+                <div class="plots">
+                    {% for id in ids %}
+                    <div id="{{id}}"></div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
 
