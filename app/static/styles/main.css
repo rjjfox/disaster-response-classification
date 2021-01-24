@@ -145,7 +145,6 @@ button:hover {
 }
 
 /* Samples */
-
 .samples h3 {
   margin: 1em 0;
 }
@@ -167,13 +166,17 @@ button:hover {
   margin: 1em 0;
 }
 
-.sample-slots > div {
+.sample-slots > form {
   background: #e4e4e4;
   padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 25px;
+}
+
+.sample-slots input {
+  display: none;
 }
 
 /* Plots */

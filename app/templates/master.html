@@ -106,12 +106,15 @@
 
             <div class="sample-slots">
                 {% for sample in sample_messages %}
-                <div>
+                <form action="/go" method="get">
+                    <input type="text" name="query" value="{{sample[0]}}">
                     <p><i>"{{sample[2]}}"</i> (source: {{sample[1]}})</p>
                     <div>
-                        <button>Classify Message</button>
+                        <button type="submit">Classify Message</button>
                     </div>
-                </div>
+                </form>
+                <!-- <div>
+                </div> -->
                 {% endfor %}
             </div>
         </div>
