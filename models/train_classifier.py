@@ -13,6 +13,8 @@ from sklearn.multioutput import MultiOutputClassifier
 from sklearn.metrics import classification_report
 import pickle
 
+from custom_tokenizer import tokenize
+
 
 def load_data(database_filepath):
     """Load data from SQLite database and parse into features and target variables"""
@@ -25,28 +27,6 @@ def load_data(database_filepath):
     categories = Y.columns.tolist()
 
     return X, Y, categories
-
-
-def tokenize(text):
-    """Clean and tokenize text"""
-
-    # remove punctuation and capitals
-    text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
-
-    # tokenize into words
-    tokens = word_tokenize(text)
-
-    # Remove stop words
-    tokens = [t for t in tokens if t not in stopwords.words("english")]
-
-    # lemmatize
-    lemmatizer = WordNetLemmatizer()
-    clean_tokens = []
-    for tok in tokens:
-        clean_tok = lemmatizer.lemmatize(tok).strip()
-        clean_tokens.append(clean_tok)
-
-    return clean_tokens
 
 
 def build_model():

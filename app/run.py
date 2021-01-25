@@ -6,27 +6,33 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
 from flask import Flask
-from flask import render_template, request, jsonify
+from flask import render_template, request
 import plotly.graph_objects as go
 import joblib
 from sqlalchemy import create_engine
 
+# other py files
 from plots import return_figures
+import sys
+
+sys.path.append("C:/Users/ryanf/Projects/DisasterResponsePipeline/models")
+from custom_tokenizer import tokenize
 
 
 app = Flask(__name__)
 
 
-def tokenize(text):
-    tokens = word_tokenize(text)
-    lemmatizer = WordNetLemmatizer()
+# we need this because of how pickled models work
+# def tokenize(text):
+#     tokens = word_tokenize(text)
+#     lemmatizer = WordNetLemmatizer()
 
-    clean_tokens = []
-    for tok in tokens:
-        clean_tok = lemmatizer.lemmatize(tok).lower().strip()
-        clean_tokens.append(clean_tok)
+#     clean_tokens = []
+#     for tok in tokens:
+#         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
+#         clean_tokens.append(clean_tok)
 
-    return clean_tokens
+#     return clean_tokens
 
 
 # load data
@@ -36,7 +42,7 @@ try:
 except:
     # PythonAnywhere
     engine = create_engine(
-        "sqlite:////sqlite:////home/ryanfox212/disaster-response-classification/data/DisasterResponse.db"
+        "sqlite:////home/ryanfox212/disaster-response-classification/data/DisasterResponse.db"
     )
     df = pd.read_sql_table("messages", engine)
 
