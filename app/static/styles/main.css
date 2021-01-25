@@ -78,6 +78,10 @@
 
 /* ============== Hero section ============== */
 
+.intro {
+  padding: 0 1em;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
@@ -126,7 +130,7 @@ form button {
 }
 
 button {
-  background-color: #4caf50;
+  background-color: #228b22;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -137,10 +141,17 @@ button {
 
 button:hover {
   background-color: #45a049;
+  transition-duration: 0.15s;
 }
 
 .message {
   background-color: #cdd9eb;
+}
+
+@media only screen and (max-width: 500px) {
+  .hero p {
+    width: 90%;
+  }
 }
 
 /* ============== Overview section ============== */
@@ -202,7 +213,7 @@ button:hover {
 .plots {
   margin-top: 1.5em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
 /* ============== Results section ============== */
