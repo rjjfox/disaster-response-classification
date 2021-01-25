@@ -1,59 +1,43 @@
-import json
-import plotly
-import pandas as pd
-
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
-
+import sys
 from flask import Flask
 from flask import render_template, request
-import plotly.graph_objects as go
 import joblib
 from sqlalchemy import create_engine
 
-# other py files
-from plots import return_figures
-import sys
+import pandas as pd
+import json
+import plotly
 
+# import custom py files
+from plots import return_figures
+
+# append paths to reach cousin folder on local and cloud deploys
 sys.path.append("C:/Users/ryanf/Projects/DisasterResponsePipeline/models")
+sys.path.append("/home/ryanfox212/disaster-response-classification/models")
 from custom_tokenizer import tokenize
 
 
 app = Flask(__name__)
 
 
-# we need this because of how pickled models work
-# def tokenize(text):
-#     tokens = word_tokenize(text)
-#     lemmatizer = WordNetLemmatizer()
-
-#     clean_tokens = []
-#     for tok in tokens:
-#         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
-#         clean_tokens.append(clean_tok)
-
-#     return clean_tokens
-
-
-# load data
+# try/except to work both for local builds and cloud deployment
 try:
+    # load data from database
     engine = create_engine("sqlite:///data/DisasterResponse.db")
     df = pd.read_sql_table("messages", engine)
+
+    # load model from pickle file
+    model = joblib.load("models/classifier.pkl")
 except:
-    # PythonAnywhere
+    # PythonAnywhere directories
     engine = create_engine(
         "sqlite:////home/ryanfox212/disaster-response-classification/data/DisasterResponse.db"
     )
     df = pd.read_sql_table("messages", engine)
-
-# load model
-try:
-    model = joblib.load("models/classifier.pkl")
-except:
-    # Python Anywhere
     model = joblib.load(
         "/home/ryanfox212/disaster-response-classification/models/classifier.pkl"
     )
+
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route("/")
