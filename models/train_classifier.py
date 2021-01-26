@@ -33,11 +33,27 @@ def build_model():
 
     pipeline = Pipeline(
         [
-            ("vect", CountVectorizer(tokenizer=tokenize)),
-            ("tfidf", TfidfTransformer()),
+            (
+                "vect",
+                CountVectorizer(
+                    tokenizer=tokenize,
+                    max_df=1.0,
+                    max_features=None,
+                    ngram_range=(1, 2),
+                ),
+            ),
+            ("tfidf", TfidfTransformer(use_idf=True)),
             (
                 "clf",
-                MultiOutputClassifier(SGDClassifier()),
+                MultiOutputClassifier(
+                    SGDClassifier(
+                        loss="hinge",
+                        alpha=0.00005,
+                        tol=0.01,
+                        n_iter_no_change=5,
+                        penalty="l2",
+                    )
+                ),
             ),
         ]
     )
