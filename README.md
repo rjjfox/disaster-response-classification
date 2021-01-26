@@ -16,6 +16,7 @@ See it live [here](https://disaster.rfoxdata.co.uk/).
   - [Imbalanced Data](#imbalanced-data)
   - [The Model](#the-model)
   - [Performance](#performance)
+- [File Descriptions](#file-descriptions)
 - [Screenshots](#screenshots)
 - [License](#license)
 
@@ -109,6 +110,12 @@ The final model has been tuned for performance both in terms of its predictive a
 | Fbeta (beta=2) | -                      | 0.811 | 0.618 |
 
 We take the weighted average for both F scores.
+
+## File Descriptions
+
+- /app - files needed to run the flask app
+- /data - training data and script to clean and process the data
+- /models - pipeline scripts and custom tokenize function
 
 ## Screenshots
 
