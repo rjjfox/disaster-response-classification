@@ -2,13 +2,9 @@ import sys
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sqlalchemy import create_engine
-import re
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.metrics import classification_report
 import pickle
@@ -38,9 +34,7 @@ def build_model():
             ("tfidf", TfidfTransformer()),
             (
                 "clf",
-                MultiOutputClassifier(
-                    RandomForestClassifier(n_estimators=10, class_weight="balanced")
-                ),
+                MultiOutputClassifier(XGBClassifier()),
             ),
         ]
     )
