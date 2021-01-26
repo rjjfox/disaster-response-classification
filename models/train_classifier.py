@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.linear_model import SGDClassifier
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, fbeta_score
 import pickle
 
 from custom_tokenizer import tokenize
@@ -65,6 +65,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
     y_pred = model.predict(X_test)
     print(classification_report(Y_test, y_pred, target_names=category_names))
+    print("Fbeta score:", fbeta_score(Y_test, y_pred, beta=2, average="weighted"))
 
 
 def save_model(model, model_filepath):
