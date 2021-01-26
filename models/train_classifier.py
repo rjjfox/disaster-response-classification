@@ -1,4 +1,7 @@
 import sys
+import warnings
+
+warnings.simplefilter(action="ignore", category=FutureWarning)
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sqlalchemy import create_engine
@@ -34,7 +37,7 @@ def build_model():
             ("tfidf", TfidfTransformer()),
             (
                 "clf",
-                MultiOutputClassifier(XGBClassifier()),
+                MultiOutputClassifier(XGBClassifier(use_label_encoder=False)),
             ),
         ]
     )
@@ -61,14 +64,19 @@ def main():
         X, Y, category_names = load_data(database_filepath)
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
 
-        print("Building model...")
-        model = build_model()
+        # run block of code and catch warnings
+        with warnings.catch_warnings():
+            # ignore all caught warnings
+            warnings.filterwarnings("ignore")
+            # execute code that will generate warnings
+            print("Building model...")
+            model = build_model()
 
-        print("Training model...")
-        model.fit(X_train, Y_train)
+            print("Training model...")
+            model.fit(X_train, Y_train)
 
-        print("Evaluating model...")
-        evaluate_model(model, X_test, Y_test, category_names)
+            print("Evaluating model...")
+            evaluate_model(model, X_test, Y_test, category_names)
 
         print("Saving model...\n    MODEL: {}".format(model_filepath))
         save_model(model, model_filepath)
