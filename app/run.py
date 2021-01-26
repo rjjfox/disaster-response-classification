@@ -1,12 +1,11 @@
 import sys
+import json
+import joblib
+import pandas as pd
+import plotly
+from sqlalchemy import create_engine
 from flask import Flask
 from flask import render_template, request
-import joblib
-from sqlalchemy import create_engine
-
-import pandas as pd
-import json
-import plotly
 
 # import custom py files
 from plots import return_figures
@@ -50,6 +49,7 @@ def index():
     ids = ["graph-{}".format(i) for i, _ in enumerate(figures)]
     graphJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
 
+    # for sample message display
     messages_df = df[["message", "genre"]].copy()
     messages_df["shortened"] = messages_df.message.str[:250]
     sample_messages = messages_df.sample(3).values
@@ -73,7 +73,7 @@ def go():
     classification_labels = model.predict([query])[0]
     classification_results = dict(zip(df.columns[4:], classification_labels))
 
-    # This will render the go.html Please see that file.
+    # This will render the go.html
     return render_template(
         "go.html", query=query, classification_result=classification_results
     )
