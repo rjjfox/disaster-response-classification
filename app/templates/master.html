@@ -75,7 +75,7 @@
         </div>
 
         <div class="form">
-            <form action="/go" method="get">
+            <form action="/go#results" method="get">
                 <input type="text" name="query" placeholder="Enter a message to classify...">
                 <div>
                     <button type="submit">Classify Message</button>
@@ -106,7 +106,7 @@
 
             <div class="sample-slots">
                 {% for sample in sample_messages %}
-                <form action="/go" method="get">
+                <form action="/go#results" method="get">
                     <input type="text" name="query" value="{{sample[0]}}">
                     <p><i>"{{sample[2]}}"</i> (source: {{sample[1]}})</p>
                     <div>
