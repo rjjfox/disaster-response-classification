@@ -4,7 +4,7 @@ An API that uses machine learning to categorise messages received during a crisi
 
 See it live [here](https://disaster.rfoxdata.co.uk/).
 
-![screenshot](app/static/screenshot.jpg)
+![screenshot](app/static/main-screenshot.jpg)
 
 ## Table of Contents
 
